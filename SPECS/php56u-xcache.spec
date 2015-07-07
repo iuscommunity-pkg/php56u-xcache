@@ -10,11 +10,7 @@
 %global ext_name     xcache
 %global with_zts     0%{?__ztsphp:1}
 
-%if "%{php_version}" < "5.6"
-%global ini_name  %{ext_name}.ini
-%else
 %global ini_name  40-%{ext_name}.ini
-%endif
 
 Summary:       Fast, stable PHP opcode cacher
 Name:          php-xcache
