@@ -23,14 +23,7 @@ Release:       2%{?dist}
 License:       BSD
 Group:         Development/Languages
 URL:           http://xcache.lighttpd.net/
-
-%if 0%{?svnrev}
-# svn export -r 1496 svn://svn.lighttpd.net/xcache/trunk xcache-4.0.0
-# tar czf xcache-svn1496.tgz xcache-4.0.0
-Source0:       xcache-svn%{svnrev}.tgz
-%else
-Source0:       http://xcache.lighttpd.net/pub/Releases/%{version}%{?prever:-%{prever}}/%{ext_name}-%{version}%{?prever:-%{prever}}.tar.gz
-%endif
+Source0:       http://xcache.lighttpd.net/pub/Releases/%{version}/%{ext_name}-%{version}.tar.gz
 Source1:       xcache-httpd.conf
 
 # Relocation of configuration files to /etc/xcache
@@ -82,7 +75,7 @@ This requires to configure, in XCache configuration file (xcache.ini):
 %setup -q -c 
 
 # rename source folder
-mv xcache-%{version}%{?prever:-%{prever}} nts
+mv xcache-%{version} nts
 
 cp %{SOURCE1} xcache-httpd.conf
 cd nts
@@ -91,8 +84,8 @@ cd nts
 
 # Sanity check, really often broken
 extver=$(sed -n '/define XCACHE_VERSION/{s/.* "//;s/".*$//;p}' xcache.h)
-if test "x${extver}" != "x%{version}%{?svnrev:-dev}%{?prever:-%{prever}}"; then
-   : Error: Upstream extension version is ${extver}, expecting %{version}%{?svnrev:-dev}%{?prever:-%{prever}}.
+if test "x${extver}" != "x%{version}"; then
+   : Error: Upstream extension version is ${extver}, expecting %{version}.
    exit 1
 fi
 cd ..
