@@ -18,7 +18,6 @@
 
 Summary:       Fast, stable PHP opcode cacher
 Name:          php-xcache
-Epoch:         1
 Version:       3.2.0
 Release:       2%{?dist}
 License:       BSD
@@ -66,7 +65,7 @@ data cache. You need to edit configuration file (xcache.ini) to enable it.
 Summary:       XCache Administration
 Group:         Development/Languages
 Requires:      mod_php, httpd
-Requires:      %{name} = %{epoch}:%{version}-%{release}
+Requires:      %{name} = %{version}-%{release}
 BuildArch:     noarch
 
 %description -n xcache-admin
