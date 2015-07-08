@@ -198,6 +198,9 @@ REPORT_EXIT_STATUS=1 \
 
 
 %changelog
+* Wed Jul 08 2015 Carl George <carl.george@rackspace.com> 3.2.0-1.ius
+- Port from Fedora to IUS
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:3.2.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
