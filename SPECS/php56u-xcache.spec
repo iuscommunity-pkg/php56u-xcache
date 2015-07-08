@@ -18,6 +18,7 @@
 
 Summary:       Fast, stable PHP opcode cacher
 Name:          %{php}-%{ext_name}
+Epoch:         1
 Version:       3.2.0
 Release:       1.ius%{?dist}
 License:       BSD
@@ -36,11 +37,10 @@ BuildRequires: %{php}-devel
 Requires:      %{php}(zend-abi) = %{php_zend_api}
 Requires:      %{php}(api) = %{php_core_api}
 
-Provides:      config(php-%{ext_name}) = %{version}-%{release}
-Provides:      php-%{ext_name} = %{version}-%{release}
-Provides:      php-%{ext_name}%{?_isa} = %{version}-%{release}
+Provides:      php-%{ext_name} = %{epoch}:%{version}-%{release}
+Provides:      php-%{ext_name}%{?_isa} = %{epoch}:%{version}-%{release}
 
-Conflicts:     php-%{ext_name} < %{version}
+Conflicts:     php-%{ext_name} < %{epoch}:%{version}
 
 %if 0%{?fedora} < 20 && 0%{?rhel} < 7
 # Filter private shared object
@@ -63,8 +63,11 @@ data cache. You need to edit configuration file (xcache.ini) to enable it.
 %package admin
 Summary:       XCache Administration
 Group:         Development/Languages
-Requires:      %{name} = %{version}-%{release}
+Requires:      %{name} = %{epoch}:%{version}-%{release}
 BuildArch:     noarch
+
+Provides:      xcache-admin = %{epoch}:%{version}-%{release}
+Conflicts:     xcache-admin < %{epoch}:%{version}
 
 %description admin
 This package provides the XCache Administration web application.
@@ -198,7 +201,7 @@ REPORT_EXIT_STATUS=1 \
 
 
 %changelog
-* Wed Jul 08 2015 Carl George <carl.george@rackspace.com> 3.2.0-1.ius
+* Wed Jul 08 2015 Carl George <carl.george@rackspace.com> 1:3.2.0-1.ius
 - Port from Fedora to IUS
 
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:3.2.0-2
