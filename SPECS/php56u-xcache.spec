@@ -58,14 +58,14 @@ NOTICE: opcode cacher is disable to allow use with php-opcache only for user
 data cache. You need to edit configuration file (xcache.ini) to enable it.
 
 
-%package -n xcache-admin
+%package admin
 Summary:       XCache Administration
 Group:         Development/Languages
 Requires:      mod_php, httpd
 Requires:      %{name} = %{version}-%{release}
 BuildArch:     noarch
 
-%description -n xcache-admin
+%description admin
 This package provides the XCache Administration web application,
 with Apache configuration, on http://localhost/xcache
 
@@ -193,7 +193,7 @@ REPORT_EXIT_STATUS=1 \
 %{php_ztsextdir}/%{ext_name}.so
 %endif
 
-%files -n xcache-admin
+%files admin
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/xcache.conf
 %{_datadir}/xcache
 # No real configuration files, only sample files
