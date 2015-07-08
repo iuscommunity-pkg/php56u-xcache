@@ -40,6 +40,8 @@ Provides:      config(php-%{ext_name}) = %{version}-%{release}
 Provides:      php-%{ext_name} = %{version}-%{release}
 Provides:      php-%{ext_name}%{?_isa} = %{version}-%{release}
 
+Conflicts:     php-%{ext_name} < %{version}
+
 %if 0%{?fedora} < 20 && 0%{?rhel} < 7
 # Filter private shared object
 %{?filter_provides_in: %filter_provides_in %{_libdir}/.*\.so$}
