@@ -14,10 +14,12 @@
 
 %global ini_name  40-%{ext_name}.ini
 
+%global php php56u
+
 Summary:       Fast, stable PHP opcode cacher
-Name:          php-xcache
+Name:          %{php}-%{ext_name}
 Version:       3.2.0
-Release:       2%{?dist}
+Release:       1.ius%{?dist}
 License:       BSD
 Group:         Development/Languages
 URL:           http://xcache.lighttpd.net/
@@ -29,10 +31,10 @@ Patch0:        xcache-config.patch
 # Disable cache to allow work with php-opcache
 Patch1:        xcache-cacher.patch
 
-BuildRequires: php-devel
+BuildRequires: %{php}-devel
 
-Requires:      php(zend-abi) = %{php_zend_api}
-Requires:      php(api) = %{php_core_api}
+Requires:      %{php}(zend-abi) = %{php_zend_api}
+Requires:      %{php}(api) = %{php_core_api}
 
 %if 0%{?fedora} < 20 && 0%{?rhel} < 7
 # Filter private shared object
