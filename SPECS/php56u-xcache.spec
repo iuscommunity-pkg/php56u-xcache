@@ -61,13 +61,11 @@ data cache. You need to edit configuration file (xcache.ini) to enable it.
 %package admin
 Summary:       XCache Administration
 Group:         Development/Languages
-Requires:      mod_php, httpd
 Requires:      %{name} = %{version}-%{release}
 BuildArch:     noarch
 
 %description admin
-This package provides the XCache Administration web application,
-with Apache configuration, on http://localhost/xcache
+This package provides the XCache Administration web application.
 
 This requires to configure, in XCache configuration file (xcache.ini):
 - xcache.admin.user
@@ -150,9 +148,6 @@ mv %{buildroot}%{_datadir}/xcache/cacher/config.example.php \
 mv %{buildroot}%{_datadir}/xcache/coverager/config.example.php \
    %{buildroot}%{_sysconfdir}/xcache/coverager
 
-install -D -m 644 -p xcache-httpd.conf \
-        %{buildroot}%{_sysconfdir}/httpd/conf.d/xcache.conf
-
 
 %check
 cd nts
@@ -194,7 +189,7 @@ REPORT_EXIT_STATUS=1 \
 %endif
 
 %files admin
-%config(noreplace) %{_sysconfdir}/httpd/conf.d/xcache.conf
+%doc xcache-httpd.conf
 %{_datadir}/xcache
 # No real configuration files, only sample files
 %{_sysconfdir}/xcache
