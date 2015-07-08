@@ -1,4 +1,6 @@
-# spec file for php-xcache
+# IUS spec file for php56u-xcache, forked from:
+#
+# Fedora spec file for php-xcache
 #
 # Copyright (c) 2012-2014 Remi Collet
 # License: CC-BY-SA
