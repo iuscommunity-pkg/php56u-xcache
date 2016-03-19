@@ -20,7 +20,7 @@ Summary:       Fast, stable PHP opcode cacher
 Name:          %{php}-%{ext_name}
 Epoch:         1
 Version:       3.2.0
-Release:       1.ius%{?dist}
+Release:       2.ius%{?dist}
 License:       BSD
 Group:         Development/Languages
 URL:           http://xcache.lighttpd.net/
@@ -42,11 +42,11 @@ Provides:      php-%{ext_name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 Conflicts:     php-%{ext_name} < %{epoch}:%{version}
 
-%if 0%{?fedora} < 20 && 0%{?rhel} < 7
-# Filter private shared object
-%{?filter_provides_in: %filter_provides_in %{_libdir}/.*\.so$}
+# RPM 4.8
+%{?filter_provides_in: %filter_provides_in %{php_extdir}/.*\.so$}
 %{?filter_setup}
-%endif
+# RPM 4.9
+%global __provides_exclude_from %{?__provides_exclude_from:%__provides_exclude_from|}%{php_extdir}/.*\\.so$
 
 
 %description
@@ -201,6 +201,9 @@ REPORT_EXIT_STATUS=1 \
 
 
 %changelog
+* Sat Mar 19 2016 Carl George <carl.george@rackspace.com> - 1:3.2.0-2.ius
+- Clean up filters
+
 * Wed Jul 08 2015 Carl George <carl.george@rackspace.com> 1:3.2.0-1.ius
 - Port from Fedora to IUS
 
