@@ -8,7 +8,6 @@
 #
 # Please, preserve the changelog entries
 #
-%{!?php_inidir:  %global php_inidir       %{_sysconfdir}/php.d}
 %global ext_name     xcache
 %global with_zts     0%{?__ztsphp:1}
 
