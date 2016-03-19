@@ -181,7 +181,9 @@ REPORT_EXIT_STATUS=1 \
 
 
 %files
-%doc nts/{AUTHORS,ChangeLog,COPYING,README,THANKS}
+%{!?_licensedir:%global license %doc}
+%license nts/COPYING
+%doc nts/{AUTHORS,ChangeLog,README,THANKS}
 %config(noreplace) %{php_inidir}/%{ini_name}
 %{php_extdir}/%{ext_name}.so
 
@@ -200,6 +202,7 @@ REPORT_EXIT_STATUS=1 \
 %changelog
 * Sat Mar 19 2016 Carl George <carl.george@rackspace.com> - 1:3.2.0-2.ius
 - Clean up filters
+- Mark COPYING as %%license
 
 * Wed Jul 08 2015 Carl George <carl.george@rackspace.com> 1:3.2.0-1.ius
 - Port from Fedora to IUS
