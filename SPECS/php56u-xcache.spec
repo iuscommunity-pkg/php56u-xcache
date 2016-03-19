@@ -10,10 +10,8 @@
 #
 %global ext_name     xcache
 %global with_zts     0%{?__ztsphp:1}
-
-%global ini_name  40-%{ext_name}.ini
-
-%global php php56u
+%global ini_name     40-%{ext_name}.ini
+%global php          php56u
 
 Summary:       Fast, stable PHP opcode cacher
 Name:          %{php}-%{ext_name}
@@ -78,7 +76,7 @@ This requires to configure, in XCache configuration file (xcache.ini):
 
 
 %prep
-%setup -q -c 
+%setup -q -c
 
 # rename source folder
 mv xcache-%{version} nts
